@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My CalcInst Application Tumanov</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_calculator">Calculator</string>
+    <string name="title_huy">huy</string>
 </resources>

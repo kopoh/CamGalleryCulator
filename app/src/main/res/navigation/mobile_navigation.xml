@@ -12,14 +12,19 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.android.mycalcinstapplicationtumanov.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_gallery"
+        android:name="com.android.mycalcinstapplicationtumanov.ui.dashboard.GalleryFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.android.mycalcinstapplicationtumanov.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_calculator"
+        android:name="com.android.mycalcinstapplicationtumanov.ui.notifications.CalculatorFragment"
+        android:label="@string/title_calculator"
+        tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/userEditProfileFragment"
+        android:name="com.android.mycalcinstapplicationtumanov.ui.huy.UserEditProfileFragment"
+        android:label="user_edit_profile_fragment"
+        tools:layout="@layout/user_edit_profile_fragment" />
 </navigation>
