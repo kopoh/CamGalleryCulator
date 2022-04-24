@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.mycalcinstapplicationtumanov.R
 import com.android.mycalcinstapplicationtumanov.databinding.FragmentHomeBinding
-import com.android.mycalcinstapplicationtumanov.ui.huy.UserEditProfileFragment
 import java.io.File
 import java.io.FileOutputStream
 
@@ -30,7 +29,7 @@ import java.io.FileOutputStream
 class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
 
     companion object {
-        fun newInstance() = UserEditProfileFragment()
+        fun newInstance() = HomeFragment()
     }
 
     private var _binding : FragmentHomeBinding? = null

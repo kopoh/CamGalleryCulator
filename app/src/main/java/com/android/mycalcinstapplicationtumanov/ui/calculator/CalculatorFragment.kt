@@ -1,4 +1,4 @@
-package com.android.mycalcinstapplicationtumanov.ui.notifications
+package com.android.mycalcinstapplicationtumanov.ui.calculator
 
 import android.os.Bundle
 import android.view.LayoutInflater

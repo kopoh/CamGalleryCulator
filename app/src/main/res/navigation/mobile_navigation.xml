@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_gallery"
-        android:name="com.android.mycalcinstapplicationtumanov.ui.dashboard.GalleryFragment"
+        android:name="com.android.mycalcinstapplicationtumanov.ui.gallery.GalleryFragment"
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/navigation_calculator"
-        android:name="com.android.mycalcinstapplicationtumanov.ui.notifications.CalculatorFragment"
+        android:name="com.android.mycalcinstapplicationtumanov.ui.calculator.CalculatorFragment"
         android:label="@string/title_calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment

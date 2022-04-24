@@ -1,9 +1,8 @@
-package com.android.mycalcinstapplicationtumanov.ui.notifications
+package com.android.mycalcinstapplicationtumanov.ui.calculator
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.os.Bundle
 
 class CalculatorViewModel : ViewModel() {
 

@@ -1,19 +1,21 @@
-package com.android.mycalcinstapplicationtumanov.ui.dashboard
+package com.android.mycalcinstapplicationtumanov.ui.gallery
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.mycalcinstapplicationtumanov.data.Contact
 import com.android.mycalcinstapplicationtumanov.databinding.FragmentGalleryBinding
 
 
 class GalleryFragment : Fragment() {
 
     private var _binding : FragmentGalleryBinding? = null
-
+    private lateinit var huyna : MutableList<Resources>
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -29,11 +31,27 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root : View = binding.root
 
-        val textView : TextView = binding.textDashboard
+        /*val textView : TextView = binding.
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         return root
+    }
+
+    override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.rvContacts.apply {
+
+            adapter = ListAdapter(context, createContacts())
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun createContacts(): List<Contact> {
+        val contacts = mutableListOf<Contact>()
+        for (i in 1..150) contacts.add(Contact("Person #$i", i))
+        return contacts
     }
 
     override fun onDestroyView() {

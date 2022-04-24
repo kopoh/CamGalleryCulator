@@ -1,4 +1,4 @@
-package com.android.mycalcinstapplicationtumanov.ui.dashboard
+package com.android.mycalcinstapplicationtumanov.ui.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
