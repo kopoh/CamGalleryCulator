@@ -8,36 +8,88 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.mycalcinstapplicationtumanov.R
+import com.android.mycalcinstapplicationtumanov.R.id.ivProfile
 import com.android.mycalcinstapplicationtumanov.data.Contact
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.FitCenter
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
-class ListAdapter(private val context : Context, private val contacts : List<Contact>)
-    : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    private val TAG = "ContactAdapter"
-
-    // Usually involves inflating a layout from XML and returning the holder - THIS IS EXPENSIVE
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.img_container_fragment, parent, false))
+class ListAdapter(
+    private val context: Context, private val contacts : List<Contact>
+) :
+    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
+        val view = LayoutInflater.from(viewGroup.context)
+            .inflate(R.layout.item_contact, viewGroup, false)
+        return ViewHolder(view)
     }
 
-    // Returns the total count of items in the list
-    override fun getItemCount() = contacts.size
+    override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
+        val contact = contacts[i]
+        var requestOptions = RequestOptions()
+        requestOptions = requestOptions.transforms(FitCenter(), RoundedCorners(16))
+        Glide.with(context)
+            .load(contact.imageUrl)
+            .apply(requestOptions)
+            .skipMemoryCache(true)//for caching the image url in case phone is offline
+            .into(viewHolder.img_android)
 
-    // Involves populating data into the item through holder - NOT expensive
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val contact = contacts[position]
-        holder.bind(contact)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(contact: Contact) {
-           Glide.with(context).load(contact.imageUrl).into(g)
+    override fun getItemCount(): Int {
+        return 10
+    }
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        var img_android: ImageView
+
+        init {
+            img_android =
+                view.findViewById<View>(ivProfile) as ImageView
         }
     }
+
 }
 
-// Create the adapter by extending RecyclerView.Adapter. This custom ViewHolder will give access to your views
+
+
+//class ListAdapter(private val context : Context, private val contacts : List<Contact>)
+//    : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+//
+//    private val TAG = "ContactAdapter"
+//
+//    // Usually involves inflating a layout from XML and returning the holder - THIS IS EXPENSIVE
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+//        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false))
+//    }
+//
+//    // Returns the total count of items in the list
+//    override fun getItemCount() = contacts.size
+//
+//    // Involves populating data into the item through holder - NOT expensive
+//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        val contact = contacts[position]
+//        Glide.with(context).load(contact.imageUrl).into()
+//    }
+//
+//    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//
+//        private var rowImage : ImageView = itemView.findViewById(ivProfile)
+//
+//        fun bind(contact: Contact) {
+//           Glide.with(context).load(contact.imageUrl).into(rowImage)
+//        }
+//    }
+//}
+
+
+
+
+
+
 //class ListAdapter(private val context: Context, private val images: List<Contact>):RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 //
 //
@@ -65,10 +117,10 @@ class ListAdapter(private val context : Context, private val contacts : List<Con
 //
 //
 //    // Replace the contents of a view to be invoked by the layout manager
-//    /*override fun onBindViewHolder(holder : ViewHolder, position : Int) {
+//    override fun onBindViewHolder(holder : ViewHolder, position : Int) {
 //        // Get element from your dataset at this position and replace the contents of the View with that element
 //        holder.rowImage.setImageResource(images[position])
-//    }*/
+//    }
 //
 //    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        //holder.rowImage.setImageBitmap(images[position])
@@ -80,7 +132,7 @@ class ListAdapter(private val context : Context, private val contacts : List<Con
 //    //override fun getItemCount(): Int = images.size
 //    override fun getItemCount() = images.size
 //}
-
+//
 
 
 

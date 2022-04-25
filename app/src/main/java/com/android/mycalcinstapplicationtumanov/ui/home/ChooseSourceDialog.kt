@@ -15,7 +15,6 @@ class ChooseSourceDialog : BottomSheetDialogFragment(), View.OnClickListener {
         val view = View.inflate(context, R.layout.dialog_choose_source, null)
         if (view != null) {
             dialog.setContentView(view)
-            view.findViewById<View>(R.id.btnGallery).setOnClickListener(this)
             view.findViewById<View>(R.id.btnCamera).setOnClickListener(this)
         }
     }
@@ -26,11 +25,9 @@ class ChooseSourceDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         val id = v.id
-        if (R.id.btnGallery === id) {
-            getResults(selectFile)
-        } else if (R.id.btnCamera === id) {
+        if (R.id.btnCamera === id) {
             getResults(selectPhoto)
-        }
+        } else
         dismiss()
     }
 
@@ -44,7 +41,6 @@ class ChooseSourceDialog : BottomSheetDialogFragment(), View.OnClickListener {
     }
 
     companion object {
-        const val selectFile = 1
         const val selectPhoto = 2
         private lateinit var listener: OnFileSelectedListener
 

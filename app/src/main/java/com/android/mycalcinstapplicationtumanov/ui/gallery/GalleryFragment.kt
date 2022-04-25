@@ -15,7 +15,6 @@ import com.android.mycalcinstapplicationtumanov.databinding.FragmentGalleryBindi
 class GalleryFragment : Fragment() {
 
     private var _binding : FragmentGalleryBinding? = null
-    private lateinit var huyna : MutableList<Resources>
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!

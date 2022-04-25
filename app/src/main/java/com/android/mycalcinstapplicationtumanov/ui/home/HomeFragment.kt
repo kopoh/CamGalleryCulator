@@ -28,10 +28,6 @@ import java.io.FileOutputStream
 
 class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
     private var _binding : FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -41,7 +37,6 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
 
     val REQUEST_IMAGE_CAPTURE = 1001
     private lateinit var requestPermissionLauncher : ActivityResultLauncher<String>
-    var profilePhotoUrl : String? = null
     var profilePhotoBitmap : Bitmap? = null
 
 
@@ -59,7 +54,7 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
             findNavController().navigate(R.id.userEditProfileFragment)
         }
 
-        binding.ivProfile.setOnClickListener {
+        binding.igGaaag.setOnClickListener {
             showChooseDialog()
         }
         val textView : TextView = binding.textHome
