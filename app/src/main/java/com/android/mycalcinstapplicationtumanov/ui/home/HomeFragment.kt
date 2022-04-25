@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
     private val binding get() = _binding!!
 
 
-    val REQUEST_IMAGE_CAPTURE = 1001
+    private val REQUEST_IMAGE_CAPTURE = 1001
     private lateinit var requestPermissionLauncher : ActivityResultLauncher<String>
     var profilePhotoBitmap : Bitmap? = null
 
@@ -50,17 +50,11 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root : View = binding.root
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.userEditProfileFragment)
-        }
 
         binding.igGaaag.setOnClickListener {
             showChooseDialog()
         }
-        val textView : TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

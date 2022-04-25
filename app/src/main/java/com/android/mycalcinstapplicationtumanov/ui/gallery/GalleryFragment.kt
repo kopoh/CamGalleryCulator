@@ -1,6 +1,6 @@
 package com.android.mycalcinstapplicationtumanov.ui.gallery
 
-import android.content.res.Resources
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +41,6 @@ class GalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvContacts.apply {
-
             adapter = ListAdapter(context, createContacts())
             layoutManager = LinearLayoutManager(context)
         }
@@ -49,7 +48,7 @@ class GalleryFragment : Fragment() {
 
     private fun createContacts(): List<Contact> {
         val contacts = mutableListOf<Contact>()
-        for (i in 1..150) contacts.add(Contact("Person #$i", i))
+        for (i in 1..20) contacts.add(Contact(i))
         return contacts
     }
 

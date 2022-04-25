@@ -22,9 +22,4 @@
         android:name="com.android.mycalcinstapplicationtumanov.ui.calculator.CalculatorFragment"
         android:label="@string/title_calculator"
         tools:layout="@layout/fragment_calculator" />
-    <fragment
-        android:id="@+id/userEditProfileFragment"
-        android:name="com.android.mycalcinstapplicationtumanov.ui.huy.UserEditProfileFragment"
-        android:label="user_edit_profile_fragment"
-        tools:layout="@layout/user_edit_profile_fragment" />
 </navigation>
