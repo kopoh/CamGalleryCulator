@@ -1,13 +1,14 @@
 package com.android.mycalcinstapplicationtumanov.ui.home
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    /*private val _text = MutableLiveData<String>().apply {
-        value = "Camera"
+    private val _mutableLiveDataBitMap = MutableLiveData<Any>().apply {
+
     }
-    val text : LiveData<String> = _text*/
+    val BitmaliveData : LiveData<Any> = _mutableLiveDataBitMap
 }

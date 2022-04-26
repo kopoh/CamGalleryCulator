@@ -81,17 +81,17 @@ class CalculatorFragment : Fragment() {
         // adding on click listener to our all buttons.
         b1.setOnClickListener {
             // on below line we are appending
-            // the expression to our text view.
+            // the expression to our Bitmap view.
             tvMain.text = (tvMain.text.toString() + "1")
         }
         b2.setOnClickListener {
             // on below line we are appending
-            // the expression to our text view.
+            // the expression to our Bitmap view.
             tvMain.text = (tvMain.text.toString() + "2")
         }
         b3.setOnClickListener {
             // on below line we are appending
-            // the expression to our text view.
+            // the expression to our Bitmap view.
             tvMain.text = (tvMain.text.toString() + "3")
         }
         b4.setOnClickListener {
@@ -167,7 +167,7 @@ class CalculatorFragment : Fragment() {
         }
         bmul.setOnClickListener {
             // if mul sign is not present in our
-            // text view then only we are adding
+            // Bitmap view then only we are adding
             // the multiplication operator to it.
             val str : String = tvMain.text.toString()
             if (!str.get(index = str.length - 1).equals("*")) {
@@ -185,7 +185,7 @@ class CalculatorFragment : Fragment() {
                 // square root of the given number.
                 val r = Math.sqrt(str.toDouble())
                 // on below line we are converting our double
-                // to string and then setting it to text view.
+                // to string and then setting it to Bitmap view.
                 val result = r.toString()
                 tvMain.setText(result)
             }
@@ -196,7 +196,7 @@ class CalculatorFragment : Fragment() {
             // method to calculate the value of expressions.
             val result : Double = evaluate(str)
             // on below line we are getting result
-            // and setting it to text view.
+            // and setting it to Bitmap view.
             val r = result.toString()
             calculatorViewModel.primary.value = r
             tvMain.setText(r)
@@ -205,7 +205,7 @@ class CalculatorFragment : Fragment() {
         }
         bac.setOnClickListener {
             // on clicking on ac button we are clearing
-            // our primary and secondary text view.
+            // our primary and secondary Bitmap view.
             tvMain.setText("")
             tvsec.setText("")
         }
@@ -229,10 +229,10 @@ class CalculatorFragment : Fragment() {
                 // on below line we are calculating the square.
                 val square = d * d
                 // after calculating the square we
-                // are setting it to text view.
+                // are setting it to Bitmap view.
                 tvMain.setText(square.toString())
                 // on below line we are setting
-                // the d to secondary text view.
+                // the d to secondary Bitmap view.
                 tvsec.text = "$d²"
             }
         }
