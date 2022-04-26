@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.mycalcinstapplicationtumanov.databinding.FragmentHomeBinding
@@ -179,8 +180,9 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
 //
 //    }
 
+        @RequiresApi(Build.VERSION_CODES.Q)
         fun addImageToGallery(b : Bitmap) {
-            val resolver = context?.applicationContext?.contentResolver
+            val resolver = requireContext().applicationContext.contentResolver
 
             val pictureCollection = MediaStore.Images.Media
                 .getContentUri(VOLUME_EXTERNAL_PRIMARY)
@@ -190,31 +192,34 @@ class HomeFragment : Fragment(), ChooseSourceDialog.OnFileSelectedListener {
                 put(IS_PENDING, 1)
             }
 
-            val pictureContentUri = resolver!!.insert(pictureCollection, pictureDetails)!!
+            val pictureContentUri = resolver.insert(pictureCollection, pictureDetails)
 
-            resolver.openFileDescriptor(pictureContentUri, "w", null).use { pfd ->
-                try {
-                    pfd?.let {
-                        val fos = FileOutputStream(it.fileDescriptor)
-                        b.compress(Bitmap.CompressFormat.PNG, 100, fos)
-                        fos.close()
+            pictureContentUri?.let {
+                resolver.openFileDescriptor(it, "w", null).use { pfd ->
+                    try {
+                        pfd?.let {
+                            val fos = FileOutputStream(it.fileDescriptor)
+                            b.compress(Bitmap.CompressFormat.PNG, 100, fos)
+                            fos.close()
+                        }
+                    } catch (e : IOException) {
+                        e.printStackTrace()
                     }
-                } catch (e : IOException) {
-                    e.printStackTrace()
                 }
             }
 
             pictureDetails.clear()
             pictureDetails.put(IS_PENDING, 0)
-            resolver.update(pictureContentUri, pictureDetails, null, null)
+            pictureContentUri?.let { resolver.update(it, pictureDetails, null, null) }
         }
 
+        @RequiresApi(Build.VERSION_CODES.Q)
         override fun onActivityResult(requestCode : Int, resultCode : Int, intent : Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             intent?.extras?.let {
                 profilePhotoBitmap = it.get("data") as Bitmap
                 //saveProfilePhoto(this.profilePhotoBitmap!!)
-                addImageToGallery(this.profilePhotoBitmap!!)
+                addImageToGallery(profilePhotoBitmap!!)
 //                val bitmap = uriToBitmap(image_uri!!)
 //                frame?.setImageBitmap(bitmap)
 

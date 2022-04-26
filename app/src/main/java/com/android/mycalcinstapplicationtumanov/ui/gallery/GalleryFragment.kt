@@ -1,7 +1,6 @@
 package com.android.mycalcinstapplicationtumanov.ui.gallery
 
 
-import android.app.Activity
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -87,7 +86,7 @@ class GalleryFragment : Fragment() {
         )
         val cursor : Cursor = context?.contentResolver!!.query(
             uriExternal, projection, null,
-            null, MediaStore.Images.ImageColumns.DATE_ADDED + " DESC"
+            null
         )!!
         val column_index = cursor
             .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
@@ -100,7 +99,7 @@ class GalleryFragment : Fragment() {
 
     private fun createContacts() : List<Uri> {
         val contacts = mutableListOf<Uri>()
-        for (i in 0..5) getLastImageFromGallery(i)?.let { contacts.add(it) }
+        for (i in 0..20) getLastImageFromGallery(i)?.let { contacts.add(it) }
         return contacts
     }
 
