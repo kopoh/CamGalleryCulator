@@ -36,9 +36,9 @@ class ListAdapter(
         Glide.with(context)
             .load(Uri)
             .apply(RequestOptions()
-                .fitCenter()
                 .format(DecodeFormat.PREFER_ARGB_8888)
-                .override(Target.SIZE_ORIGINAL))
+//              .override(Target.SIZE_ORIGINAL)
+                )
             .transform(CenterCrop(), RoundedCorners(12))
             .into(viewHolder.img_android)
 
