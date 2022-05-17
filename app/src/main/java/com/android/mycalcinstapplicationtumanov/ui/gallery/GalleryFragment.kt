@@ -99,7 +99,7 @@ class GalleryFragment : Fragment() {
 
     private fun createContacts() : List<Uri> {
         val contacts = mutableListOf<Uri>()
-        for (i in 0..20) getLastImageFromGallery(i)?.let { contacts.add(it) }
+        for (i in 0..50) getLastImageFromGallery(i)?.let { contacts.add(it) }
         return contacts
     }
 
