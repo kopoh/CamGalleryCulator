@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-files-path
-        name="my_images"
-        path="Android/data/com.android.mycalcinstapplicationtumanov/files/Pictures" />
+        name="Images_calculator"
+        path="Android/data/com.KopohGames.calculator/files/Pictures_Calc" />
 </paths>
